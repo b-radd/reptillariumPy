@@ -1,0 +1,50 @@
+body{
+	/*background: blue;*/
+	color: black;
+	padding:1%
+}
+.button {
+	font: bold 15px Arial;
+	text-decoration: none;
+	background-color: #EEEEEE;
+	color: #333333;
+	padding: 2px 6px 2px 6px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #CCCCCC;
+}
+
+.vivarium-1 {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: [col1-start] 33%  [col2-start] 33%  [col3-start] 33% [col3-end];
+  grid-template-rows: [row1-start] 50% [row2-start] 50% [row2-end];
+}
+
+.div1, .div2, .div3, .div4, .div5 {
+  background-color: black;
+  color: #fff;
+  padding: 20px;
+}
+
+.div1 {
+  grid-column: col1-start;
+  grid-row: row1-start ;
+}
+.div2 {
+  grid-column: col1-start ;
+  grid-row: row2-start;
+}
+.div3 {
+  grid-column: col2-start;
+  grid-row: row1-start ;
+}
+.div4 {
+  grid-column: col2-start ;
+  grid-row: row2-start ;
+}
+.div5 {
+  grid-column: col3-start ;
+  grid-row: row1-start ;
+}
