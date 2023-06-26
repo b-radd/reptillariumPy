@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request
 # import sqlite3
-# from datetime import datetime
-# import pandas as pd
-# import json
-# import plotly
-# import plotly.express as px
+from datetime import datetime
+import pandas as pd
+import json
+import plotly
+import plotly.express as px
 #
 # from backend.sensorDB.sensor_list import sensor_list
 # from backend.sensorDB.retreive import get_latest_data_by_sensor_id, get_sensor_id_by_pin
@@ -19,23 +19,21 @@ app = Flask(__name__)
 @app.route('/')
 def index():
 
-    return 'Hello World!'
+    now = datetime.now()
 
-    # now = datetime.now()
-    #
-    # templateData = {
-    #     "time": now,
-    #     "uv1_1_uv": None,
-    #     "uv2_1_uv": None,
-    #     "dht1_1_temp": None,
-    #     "dht1_1_humid": None,
-    #     "dht2_1_temp": None,
-    #     "dht2_1_humid": None,
-    #     "ow1_1_temp": None,
-    #     "ow1_2_temp": None,
-    #     "ow2_1_temp": None,
-    #     "ow2_2_temp": None,
-    # }
+    templateData = {
+        "time": now,
+        "uv1_1_uv": None,
+        "uv2_1_uv": None,
+        "dht1_1_temp": None,
+        "dht1_1_humid": None,
+        "dht2_1_temp": None,
+        "dht2_1_humid": None,
+        "ow1_1_temp": None,
+        "ow1_2_temp": None,
+        "ow2_1_temp": None,
+        "ow2_2_temp": None,
+    }
     #
     # for s in sensors:
     #     if "relay" not in s:
@@ -63,7 +61,8 @@ def index():
     # fig.update_yaxes(title_text='Temperature (ºC)', range=[0., 50.])
     #
     # graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    #
+
+    return render_template('index.html', **templateData)
     # return render_template('index.html', **templateData, graphJSON=graphJSON)
 
 
