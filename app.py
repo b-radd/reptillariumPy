@@ -75,7 +75,7 @@ def index():
 
     conn.close()
 
-    fig = px.line(df_vi1, x='timestamp', y='value', color='sensor_position', markers=True)
+    fig = px.line(df_vi2, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
     fig.update_yaxes(title_text='Temperature (ºC)', range=[0., 50.])
 
