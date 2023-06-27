@@ -51,19 +51,23 @@ def index():
     #
     conn = sqlite3.connect(sqlite_db)
 
-    df = pd.read_sql_query("SELECT * FROM measurements WHERE measureType='temperature'", conn)
+    df_vi1 = pd.read_sql_query(
+        """
+        SELECT * FROM measurements WHERE measureType='temperature AND vivarium_id=1'
+        """
+        , conn)
 
     conn.close()
-    #
-    # fig = px.line(df, x='timestamp', y='value', color='sensor_id', markers=True)
-    # fig.update_xaxes(title_text='Time')
-    # fig.update_yaxes(title_text='Temperature (ºC)', range=[0., 50.])
-    #
-    # graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return df.to_html()
+    fig = px.line(df_vi1, x='timestamp', y='value', color='sensor_position', markers=True)
+    fig.update_xaxes(title_text='Time')
+    fig.update_yaxes(title_text='Temperature (ºC)', range=[0., 50.])
+
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+    # return df.to_html()
     # return render_template('index.html', **templateData)
-    # return render_template('index.html', **templateData, graphJSON=graphJSON)
+    return render_template('index.html', **templateData, graphJSON=graphJSON)
 
 
 if __name__ == '__main__':
