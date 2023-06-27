@@ -53,7 +53,7 @@ def index():
 
     df_vi1 = pd.read_sql_query(
         """
-        SELECT * FROM measurements WHERE measureType='temperature'
+        SELECT * FROM measurements WHERE measureType='temperature' AND vivarium_id=1
         """
         , conn)
 
