@@ -29,7 +29,20 @@ sqlite_db_file = 'sensorData.sqlite'
 #         ),
 #     )
 
+
+def translate_measurement_type(value):
+    if value == 'T':
+        return 'temperature'
+    elif value == 'H':
+        return 'humidity'
+    elif value == 'UV':
+        return 'uv'
+    else:
+        raise TypeError
+
+
 ser = serial.Serial('/dev/ttyACM0')
+
 
 while True:
     s = ser.readline().decode()
@@ -43,6 +56,15 @@ while True:
         tmp_sensor_id = rows[::2]
         tmp_sensor_value = rows[1::2]
 
-        print(tmp_sensor_id, tmp_sensor_value)
-        print(list(zip(tmp_sensor_id, tmp_sensor_value)))
+        for i, sensorID in enumerate(tmp_sensor_id):
+            measurement_type, sensor_pos = sensorID.split('_')
+            vivarium_no, sensor_location = sensor_pos.split('.')
+
+            value = tmp_sensor_value[i]
+
+            measurement_type = translate_measurement_type(measurement_type)
+
+            print(vivarium_no, sensor_location, measurement_type, value)
+
+
 
