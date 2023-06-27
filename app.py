@@ -76,9 +76,9 @@ def index():
                 dict(step="all")
             ])
         ),
-        tickformatstops = [
-            dict(dtickrange=[None, 1000], value="%H:%M:%S.%L ms"),
-            dict(dtickrange=[1000, 60000], value="%H:%M:%S s"),
+        tickformatstops=[
+            # dict(dtickrange=[None, 1000], value="%H:%M:%S.%L ms"),
+            dict(dtickrange=[1000, 60000], value="%I:%M:%S %p"),
             dict(dtickrange=[60000, 3600000], value="%H:%M m"),
             dict(dtickrange=[3600000, 86400000], value="%H:%M h"),
             dict(dtickrange=[86400000, 604800000], value="%e. %b d"),
