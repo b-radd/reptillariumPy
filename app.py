@@ -51,7 +51,7 @@ def index():
     #
     conn = sqlite3.connect(sqlite_db)
 
-    df_vi1 = pd.read_sql_query(
+    df = pd.read_sql_query(
         """
         SELECT * FROM measurements WHERE measureType='temperature' AND vivarium_id=1
         """
@@ -59,7 +59,7 @@ def index():
 
     conn.close()
 
-    fig = px.line(df_vi1, x='timestamp', y='value', color='sensor_position', markers=True)
+    fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
     fig.update_xaxes(
         rangeslider_visible=True,
@@ -94,7 +94,7 @@ def index():
 
     conn = sqlite3.connect(sqlite_db)
 
-    df_vi2 = pd.read_sql_query(
+    df = pd.read_sql_query(
         """
         SELECT * FROM measurements WHERE measureType='temperature' AND vivarium_id=2
         """
@@ -102,10 +102,34 @@ def index():
 
     conn.close()
 
-    fig = px.line(df_vi2, x='timestamp', y='value', color='sensor_position', markers=True)
+    fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
-    # fig.update_yaxes(title_text='Temperature (ºC)', range=[10., 40.])
-    fig.update_yaxes(title_text='Temperature (ºC)',)
+    fig.update_xaxes(
+        rangeslider_visible=True,
+        rangeselector=dict(
+            buttons=list([
+                dict(count=6, label="6h", step="hour", stepmode="backward"),
+                dict(count=12, label="12h", step="hour", stepmode="backward"),
+                dict(count=1, label="1d", step="day", stepmode="todate"),
+                dict(count=7, label="1w", step="day", stepmode="backward"),
+                dict(count=1, label="1m", step="month", stepmode="backward"),
+                dict(count=3, label="1q", step="month", stepmode="backward"),
+                dict(count=6, label="1/2y", step="month", stepmode="backward"),
+                dict(count=1, label="1y", step="year", stepmode="backward"),
+                dict(step="all")
+            ])
+        ),
+        tickformatstops=[
+            # dict(dtickrange=[None, 1000], value="%H:%M:%S.%L ms"),
+            dict(dtickrange=[1000, 60000], value="%I:%M:%S %p"),
+            dict(dtickrange=[60000, 3600000], value="%I:%M %p"),
+            dict(dtickrange=[3600000, 86400000], value="%I %p"),
+            dict(dtickrange=[86400000, 604800000], value="%e. %b"),
+            dict(dtickrange=[604800000, "M1"], value="%e. %b"),
+            dict(dtickrange=["M1", "M12"], value="%b '%y"),
+            dict(dtickrange=["M12", None], value="%Y")
+        ]
+    )
 
     graphJSON_2 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
