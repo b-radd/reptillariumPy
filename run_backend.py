@@ -38,7 +38,10 @@ while True:
         # current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
         rows = [x.split(':') for x in s.split(',')]
-        # rows = [y.strip() for x in rows for y in x]
+        rows = [y.strip() for x in rows for y in x]
+
+        tmp_sensor_id = rows[::2]
+        tmp_sensor_value = rows[1::2]
 
         print(rows)
 
