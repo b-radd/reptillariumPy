@@ -43,5 +43,6 @@ while True:
         tmp_sensor_id = rows[::2]
         tmp_sensor_value = rows[1::2]
 
-        print(rows)
+        print(tmp_sensor_id, tmp_sensor_value)
+        print(list(zip(tmp_sensor_id, tmp_sensor_value)))
 
