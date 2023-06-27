@@ -22,6 +22,8 @@ def sensorReader(database, delay=60*5):
 
     conn.close()
 
+
+
     # for sid in sensor_id:
     #     if "uv" in sid:
     #         si, sname, sdesc, spin, spin_int = get_sensor_by_id(database, sensor_id.get(sid).get("id"))
