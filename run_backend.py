@@ -3,8 +3,8 @@ import serial
 from backend.sensorRead import sensorReader
 from backend.sensorDB import initialiseDB
 
-first_time = True
-develop = True
+first_time = False
+develop = False
 sqlite_db_dir = './db'
 sqlite_db_file = 'sensorData.sqlite'
 
