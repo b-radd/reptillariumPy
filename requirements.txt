@@ -2,3 +2,4 @@ Flask~=2.3.2
 pandas~=2.0.2
 plotly~=5.15.0
 setuptools~=60.2.0
+pyserial~=3.5

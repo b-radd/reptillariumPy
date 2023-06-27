@@ -5,7 +5,8 @@ import pandas as pd
 import json
 import plotly
 import plotly.express as px
-#
+import serial
+
 # from backend.sensorDB.sensor_list import sensor_list
 # from backend.sensorDB.retreive import get_latest_data_by_sensor_id, get_sensor_id_by_pin
 
@@ -19,10 +20,10 @@ app = Flask(__name__)
 @app.route('/')
 def index():
 
-    now = datetime.now()
+    # now = datetime.now()
 
     templateData = {
-        "time": now,
+        "time": None,
         "uv1_1_uv": None,
         "uv2_1_uv": None,
         "dht1_1_temp": None,
@@ -34,7 +35,21 @@ def index():
         "ow2_1_temp": None,
         "ow2_2_temp": None,
     }
-    #
+
+    ser = serial.Serial('/dev/ttyACM0')
+
+    while True:
+        s = ser.readline().decode()
+        if s != '':
+            now = datetime.now()
+            current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+
+            rows = [x.split(':') for x in s.split(',')]
+            rows = [current_time] + [y.strip() for x in rows for y in x]
+
+            print(rows)
+
+
     # for s in sensors:
     #     if "relay" not in s:
     #
