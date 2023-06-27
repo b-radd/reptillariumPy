@@ -61,7 +61,7 @@ def index():
 
     fig = px.line(df_vi1, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
-    fig.update_yaxes(title_text='Temperature (ºC)', range=[0., 50.])
+    fig.update_yaxes(title_text='Temperature (ºC)', range=[10., 40.])
 
     graphJSON_1 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
@@ -77,7 +77,7 @@ def index():
 
     fig = px.line(df_vi2, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
-    fig.update_yaxes(title_text='Temperature (ºC)', range=[0., 50.])
+    fig.update_yaxes(title_text='Temperature (ºC)', range=[10., 40.])
 
     graphJSON_2 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
