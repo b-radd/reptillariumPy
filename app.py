@@ -61,6 +61,22 @@ def index():
 
     fig = px.line(df_vi1, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
+    fig.update_xaxes(
+        rangeslider_visible=True,
+        rangeselector=dict(
+            buttons=list([
+                dict(count=6, label="6h", step="hour", stepmode="backward"),
+                dict(count=12, label="12h", step="hour", stepmode="backward"),
+                dict(count=1, label="1d", step="day", stepmode="todate"),
+                dict(count=1, label="1w", step="week", stepmode="backward"),
+                dict(count=1, label="1m", step="month", stepmode="backward"),
+                dict(count=3, label="1q", step="month", stepmode="backward"),
+                dict(count=6, label="1/2y", step="month", stepmode="backward"),
+                dict(count=1, label="1y", step="year", stepmode="backward"),
+                dict(step="all")
+            ])
+        )
+    )
     # fig.update_yaxes(title_text='Temperature (ºC)', range=[10., 40.])
     fig.update_yaxes(title_text='Temperature (ºC)',)
 
@@ -78,7 +94,8 @@ def index():
 
     fig = px.line(df_vi2, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
-    fig.update_yaxes(title_text='Temperature (ºC)', range=[10., 40.])
+    # fig.update_yaxes(title_text='Temperature (ºC)', range=[10., 40.])
+    fig.update_yaxes(title_text='Temperature (ºC)',)
 
     graphJSON_2 = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
