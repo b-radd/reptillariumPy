@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 # sensors = sensor_list()
 
-sqlite_db = 'sqliteDB/reptillarium.sqlite'
+sqlite_db = 'sqliteDB/sensorData.sqlite'
 
 
 @app.route('/')
