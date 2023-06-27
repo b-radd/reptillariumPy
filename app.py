@@ -67,7 +67,8 @@ def index():
 
     # return df.to_html()
     # return render_template('index.html', **templateData)
-    return render_template('index.html', **templateData, graphJSON=graphJSON)
+    # return render_template('index.html', **templateData, graphJSON=graphJSON)
+    return render_template('index.html', graphJSON=graphJSON)
 
 
 if __name__ == '__main__':
