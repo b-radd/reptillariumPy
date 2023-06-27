@@ -81,10 +81,10 @@ def index():
             dict(dtickrange=[1000, 60000], value="%I:%M:%S %p"),
             dict(dtickrange=[60000, 3600000], value="%I:%M %p"),
             dict(dtickrange=[3600000, 86400000], value="%I %p"),
-            dict(dtickrange=[86400000, 604800000], value="%e. %b d"),
-            dict(dtickrange=[604800000, "M1"], value="%e. %b w"),
-            dict(dtickrange=["M1", "M12"], value="%b '%y M"),
-            dict(dtickrange=["M12", None], value="%Y Y")
+            dict(dtickrange=[86400000, 604800000], value="%e. %b"),
+            dict(dtickrange=[604800000, "M1"], value="%e. %b"),
+            dict(dtickrange=["M1", "M12"], value="%b '%y"),
+            dict(dtickrange=["M12", None], value="%Y")
         ]
     )
     # fig.update_yaxes(title_text='Temperature (ºC)', range=[10., 40.])
