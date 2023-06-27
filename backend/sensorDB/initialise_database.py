@@ -50,6 +50,8 @@ def initialiseDB(db_dir, db_file, relative_path=True, develop=False):
             value REAL,
             timestamp TEXT NOT NULL,
             sensor_id INTEGER NOT NULL,
+            vivarium_id INTEGER NOT NULL,
+            sensor_position INTEGER NOT NULL,
             FOREIGN KEY (sensor_id) REFERENCES sensors (id)
         );
         """

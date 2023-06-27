@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-# import sqlite3
+import sqlite3
 from datetime import datetime
 import pandas as pd
 import json
@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 # sensors = sensor_list()
 
-# sqlite_db = 'sqliteDB/reptillarium.sqlite'
+sqlite_db = 'sqliteDB/reptillarium.sqlite'
 
 
 @app.route('/')
@@ -24,16 +24,14 @@ def index():
 
     templateData = {
         "time": now,
-        "uv1_1_uv": None,
-        "uv2_1_uv": None,
-        "dht1_1_temp": None,
-        "dht1_1_humid": None,
-        "dht2_1_temp": None,
-        "dht2_1_humid": None,
-        "ow1_1_temp": None,
-        "ow1_2_temp": None,
-        "ow2_1_temp": None,
-        "ow2_2_temp": None,
+        "1.1": None,
+        "1.2": None,
+        "1.3": None,
+        "1.4": None,
+        "2.1": None,
+        "2.2": None,
+        "2.3": None,
+        "2.4": None,
     }
 
     # for s in sensors:
@@ -51,11 +49,11 @@ def index():
     #                                 latest_value.get("measurementType").get(sid_type).get("measurementValue")
     #                             )
     #
-    # conn = sqlite3.connect(sqlite_db)
-    #
-    # df = pd.read_sql_query("SELECT * FROM measurements WHERE measureType='temperature'", conn)
-    #
-    # conn.close()
+    conn = sqlite3.connect(sqlite_db)
+
+    df = pd.read_sql_query("SELECT * FROM measurements WHERE measureType='temperature'", conn)
+
+    conn.close()
     #
     # fig = px.line(df, x='timestamp', y='value', color='sensor_id', markers=True)
     # fig.update_xaxes(title_text='Time')
@@ -63,7 +61,8 @@ def index():
     #
     # graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template('index.html', **templateData)
+    return df.to_html()
+    # return render_template('index.html', **templateData)
     # return render_template('index.html', **templateData, graphJSON=graphJSON)
 
 

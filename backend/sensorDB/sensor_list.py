@@ -1,45 +1,42 @@
 def sensorList():
 
     sensors = {
-        # UV Sensors for UV Index
-        "uv_1.2": {
-            "name": "UV Sensor V2",
-            "sensorType": "uv sensor",
-            "pin": "A0",
-        },
-        "uv_2.2": {
-            "name": "UV Sensor V2",
-            "sensorType": "uv sensor",
-            "pin": "A1",
-        },
-        # DHT22 Sensors for Temperature and Humidity
-        "th_1.3": {
-            "name": "DHT22",
-            "sensorType": "humidity & temperature sensor",
-            "pin": "D33",
-        },
-        "th_2.3": {
-            "name": "DHT22",
-            "sensorType": "humidity & temperature sensor",
-            "pin": "D43",
-        },
-        # OneWire Temperature Sensors
-        "t_1.1": {
+        "1.1": {
             "name": "DS18B20 OneWire",
             "sensorType": "temperature sensor",
             "pin": "D31",
         },
-        "t_1.4": {
+        "1.2": {
+            "name": "UV Sensor V2",
+            "sensorType": "uv sensor",
+            "pin": "A0",
+        },
+        "1.3": {
+            "name": "DHT22",
+            "sensorType": "humidity & temperature sensor",
+            "pin": "D33",
+        },
+        "1.4": {
             "name": "DS18B20 OneWire",
             "sensorType": "temperature sensor",
             "pin": "D34",
         },
-        "t_2.1": {
+        "2.1": {
             "name": "DS18B20 OneWire",
             "sensorType": "temperature sensor",
             "pin": "D41",
         },
-        "t_2.4": {
+        "2.2": {
+            "name": "UV Sensor V2",
+            "sensorType": "uv sensor",
+            "pin": "A1",
+        },
+        "2.3": {
+            "name": "DHT22",
+            "sensorType": "humidity & temperature sensor",
+            "pin": "D43",
+        },
+        "2.4": {
             "name": "DS18B20 OneWire",
             "sensorType": "temperature sensor",
             "pin": "D44",
