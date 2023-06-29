@@ -6,6 +6,7 @@ import json
 import plotly
 import plotly.express as px
 import serial
+from waitress import serve
 
 # from backend.sensorDB.sensor_list import sensor_list
 # from backend.sensorDB.retreive import get_latest_data_by_sensor_id, get_sensor_id_by_pin
@@ -140,4 +141,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8090)
+    # app.run(host='192.168.0.219', port=8090)
+    serve(app, host='192.168.0.219', port=8090)
