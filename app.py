@@ -63,7 +63,7 @@ def index():
     fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
     fig.update_xaxes(
-        # rangeslider_visible=True,
+        rangeslider_visible=True,
         rangeselector=dict(
             buttons=list([
                 dict(count=3, label="3h", step="hour", stepmode="backward"),
@@ -107,9 +107,10 @@ def index():
     fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
     fig.update_xaxes(
-        # rangeslider_visible=True,
+        rangeslider_visible=True,
         rangeselector=dict(
             buttons=list([
+                dict(count=3, label="3h", step="hour", stepmode="backward"),
                 dict(count=6, label="6h", step="hour", stepmode="backward"),
                 dict(count=12, label="12h", step="hour", stepmode="backward"),
                 dict(count=24, label="1d", step="hour", stepmode="todate"),
