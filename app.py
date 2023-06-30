@@ -63,17 +63,18 @@ def index():
     fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
     fig.update_xaxes(
-        rangeslider_visible=True,
+        # rangeslider_visible=True,
         rangeselector=dict(
             buttons=list([
+                dict(count=3, label="3h", step="hour", stepmode="backward"),
                 dict(count=6, label="6h", step="hour", stepmode="backward"),
                 dict(count=12, label="12h", step="hour", stepmode="backward"),
-                dict(count=1, label="1d", step="day", stepmode="todate"),
+                dict(count=24, label="1d", step="hour", stepmode="todate"),
                 dict(count=7, label="1w", step="day", stepmode="backward"),
                 dict(count=1, label="1m", step="month", stepmode="backward"),
-                dict(count=3, label="1q", step="month", stepmode="backward"),
-                dict(count=6, label="1/2y", step="month", stepmode="backward"),
-                dict(count=1, label="1y", step="year", stepmode="backward"),
+                # dict(count=3, label="1q", step="month", stepmode="backward"),
+                # dict(count=6, label="1/2y", step="month", stepmode="backward"),
+                # dict(count=1, label="1y", step="year", stepmode="backward"),
                 dict(step="all")
             ])
         ),
@@ -106,17 +107,17 @@ def index():
     fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
     fig.update_xaxes(
-        rangeslider_visible=True,
+        # rangeslider_visible=True,
         rangeselector=dict(
             buttons=list([
                 dict(count=6, label="6h", step="hour", stepmode="backward"),
                 dict(count=12, label="12h", step="hour", stepmode="backward"),
-                dict(count=1, label="1d", step="day", stepmode="todate"),
+                dict(count=24, label="1d", step="hour", stepmode="todate"),
                 dict(count=7, label="1w", step="day", stepmode="backward"),
                 dict(count=1, label="1m", step="month", stepmode="backward"),
-                dict(count=3, label="1q", step="month", stepmode="backward"),
-                dict(count=6, label="1/2y", step="month", stepmode="backward"),
-                dict(count=1, label="1y", step="year", stepmode="backward"),
+                # dict(count=3, label="1q", step="month", stepmode="backward"),
+                # dict(count=6, label="1/2y", step="month", stepmode="backward"),
+                # dict(count=1, label="1y", step="year", stepmode="backward"),
                 dict(step="all")
             ])
         ),
