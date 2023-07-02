@@ -58,7 +58,7 @@ def index():
         """
         , conn)
 
-    df_latest = df[df.index.max]
+    df_latest = df.loc[df.index.max]
 
     print(df_latest)
 
