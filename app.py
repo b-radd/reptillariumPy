@@ -58,10 +58,6 @@ def index():
         """
         , conn)
 
-    df_latest = df.loc[df.index.max]
-
-    print(df_latest)
-
     conn.close()
 
     fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
