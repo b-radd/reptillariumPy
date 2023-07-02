@@ -110,7 +110,7 @@ def index():
         rangeslider_visible=True,
         rangeselector=dict(
             buttons=list([
-                dict(count=3, label="3h", step="hour", stepmode="backward"),
+                dict(count=3, label="3h", step="hour", stepmode="todate"),
                 dict(count=6, label="6h", step="hour", stepmode="backward"),
                 dict(count=12, label="12h", step="hour", stepmode="backward"),
                 dict(count=24, label="1d", step="hour", stepmode="todate"),
