@@ -23,17 +23,26 @@ def index():
 
     now = datetime.now()
 
+    conn = sqlite3.connect(sqlite_db)
+
+    latest_read = pd.read_sql_query(
+        """
+        SELECT * FROM measurements
+        """
+        , conn)
+
     templateData = {
-        "time": now,
-        "1.1": None,
-        "1.2": None,
-        "1.3": None,
-        "1.4": None,
-        "2.1": None,
-        "2.2": None,
-        "2.3": None,
-        "2.4": None,
+        "time": latest_read['timestamp'].max(),
     }
+
+    for group, data in latest_read.groupby('sensor_id'):
+        templateData[group.replace('.', '_')] = data.loc[data['timestamp'] == data['timestamp'].max()]['value'].values[0]
+
+    # print(latest_read.to_string())
+
+    conn.close()
+
+    print(templateData)
 
     # for s in sensors:
     #     if "relay" not in s:
@@ -139,10 +148,10 @@ def index():
     # return df_vi1.to_html()
     # return render_template('index.html', **templateData)
     # return render_template('index.html', **templateData, graphJSON=graphJSON)
-    return render_template('index.html', graphJSON_1=graphJSON_1, graphJSON_2=graphJSON_2)
+    return render_template('index.html', **templateData, graphJSON_1=graphJSON_1, graphJSON_2=graphJSON_2)
 
 
 if __name__ == '__main__':
     # app.run(host='192.168.0.219', port=8090)
-    # serve(app, host='192.168.0.219', port=8090)
-    serve(app, host='0.0.0.0', port=8090)
+    serve(app, host='192.168.0.219', port=8090)
+    # serve(app, host='0.0.0.0', port=8090)
