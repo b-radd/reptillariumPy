@@ -63,7 +63,7 @@ def index():
     fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
     fig.update_xaxes(
-        rangeslider_visible=True,
+        rangeslider_visible=False,
         rangeselector=dict(
             buttons=list([
                 dict(count=3, label="3h", step="hour", stepmode="backward"),
@@ -107,7 +107,7 @@ def index():
     fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
     fig.update_xaxes(title_text='Time')
     fig.update_xaxes(
-        rangeslider_visible=True,
+        rangeslider_visible=False,
         rangeselector=dict(
             buttons=list([
                 dict(count=3, label="3h", step="hour", stepmode="backward"),
@@ -144,4 +144,5 @@ def index():
 
 if __name__ == '__main__':
     # app.run(host='192.168.0.219', port=8090)
-    serve(app, host='192.168.0.219', port=8090)
+    # serve(app, host='192.168.0.219', port=8090)
+    serve(app, host='0.0.0.0', port=8090)
