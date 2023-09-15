@@ -42,7 +42,7 @@ def index():
 
     conn.close()
 
-    print(templateData)
+    # print(templateData)
 
     # for s in sensors:
     #     if "relay" not in s:
