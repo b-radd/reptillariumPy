@@ -7,7 +7,6 @@ develop = False
 sqlite_db_dir = './db'
 sqlite_db_file = 'sensorData.sqlite'
 
-
 if not develop:
     if os.path.exists(os.path.join(sqlite_db_dir, sqlite_db_file)):
         sensorReader(
