@@ -23,6 +23,7 @@ sqlite_db = 'db/sensorData.sqlite'
 def index():
 
     now = datetime.now()
+    backdate = 7
 
     conn = sqlite3.connect(sqlite_db)
 

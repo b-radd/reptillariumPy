@@ -3,31 +3,52 @@ import serial
 from backend.sensorRead import sensorReader
 from backend.sensorDB import initialiseDB
 
-first_time = False
 develop = False
 sqlite_db_dir = './db'
 sqlite_db_file = 'sensorData.sqlite'
 
-if first_time:
-    initialiseDB(sqlite_db_dir, sqlite_db_file, develop=develop)
-    sensorReader(
-        os.path.join(
-            sqlite_db_dir, sqlite_db_file
-        ),
-    )
-elif develop:
+if not develop:
+    if os.path.exists(os.path.join(sqlite_db_dir, sqlite_db_file)):
+        sensorReader(
+            os.path.join(
+                sqlite_db_dir, sqlite_db_file
+            ),
+        )
+    else:
+        initialiseDB(sqlite_db_dir, sqlite_db_file, develop=False)
+        sensorReader(
+            os.path.join(
+                sqlite_db_dir, sqlite_db_file
+            ),
+        )
+else:
     sensorReader(
         os.path.join(
             sqlite_db_dir, sqlite_db_file
         ),
         delay=10.
     )
-else:
-    sensorReader(
-        os.path.join(
-            sqlite_db_dir, sqlite_db_file
-        ),
-    )
+
+# if first_time:
+#     initialiseDB(sqlite_db_dir, sqlite_db_file, develop=develop)
+#     sensorReader(
+#         os.path.join(
+#             sqlite_db_dir, sqlite_db_file
+#         ),
+#     )
+# elif develop:
+#     sensorReader(
+#         os.path.join(
+#             sqlite_db_dir, sqlite_db_file
+#         ),
+#         delay=10.
+#     )
+# else:
+#     sensorReader(
+#         os.path.join(
+#             sqlite_db_dir, sqlite_db_file
+#         ),
+#     )
 
 
 # def translate_measurement_type(value):
