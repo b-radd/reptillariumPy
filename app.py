@@ -101,8 +101,8 @@ def index():
         )
         )
 
-    # fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
-    # fig.update_xaxes(title_text='Time')
+    fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
+    fig.update_xaxes(title_text='Time')
     # fig.update_xaxes(
     #     rangeslider_visible=False,
     #     rangeselector=dict(
@@ -162,20 +162,20 @@ def index():
             ]
         ),
 
-        yaxis=dict(
-            title_text='Temperature (ºC)',
-            titlefont=dict(color="#1f77b4"),
-            tickfont=dict(color="#1f77b4"),
-            showgrid=False,
-        ),
-
-        yaxis2=dict(
-            title_text="yaxis2 title",
-            overlaying="y",
-            side="right",
-            position=1.,
-            showgrid=False,
-        ),
+        # yaxis=dict(
+        #     title_text='Temperature (ºC)',
+        #     titlefont=dict(color="#1f77b4"),
+        #     tickfont=dict(color="#1f77b4"),
+        #     showgrid=False,
+        # ),
+        #
+        # yaxis2=dict(
+        #     title_text="yaxis2 title",
+        #     overlaying="y",
+        #     side="right",
+        #     position=1.,
+        #     showgrid=False,
+        # ),
     )
 
 
