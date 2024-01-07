@@ -65,7 +65,7 @@ def index():
 
     df = pd.read_sql_query(
         """
-        SELECT * FROM measurements WHERE measureType='temperature' AND vivarium_id=1 AND timestamp>= datetime('now','-2 day')
+        SELECT * FROM measurements WHERE measureType='temperature' AND vivarium_id=1
         """
         , conn)
 
@@ -86,7 +86,7 @@ def index():
 
     df = pd.read_sql_query(
         """
-        SELECT * FROM measurements WHERE measureType='humidity' AND vivarium_id=1 AND timestamp>= datetime('now','-2 day')
+        SELECT * FROM measurements WHERE measureType='humidity' AND vivarium_id=1
         """
         , conn)
 
@@ -141,9 +141,9 @@ def index():
                     dict(count=3, label="3h", step="hour", stepmode="backward"),
                     dict(count=6, label="6h", step="hour", stepmode="backward"),
                     dict(count=12, label="12h", step="hour", stepmode="backward"),
-                    dict(count=24, label="1d", step="hour", stepmode="todate"),
-                    dict(count=7, label="1w", step="day", stepmode="backward"),
-                    dict(count=14, label="2w", step="day", stepmode="backward"),
+                    dict(count=24, label="1d", step="hour", stepmode="backward"),
+                    # dict(count=7*24, label="1w", step="hour", stepmode="backward"),
+                    # dict(count=14, label="2w", step="day", stepmode="backward"),
                     # dict(count=3, label="1q", step="month", stepmode="backward"),
                     # dict(count=6, label="1/2y", step="month", stepmode="backward"),
                     # dict(count=1, label="1y", step="year", stepmode="backward"),
@@ -157,8 +157,8 @@ def index():
                 dict(dtickrange=[3600000, 86400000], value="%I %p"),
                 dict(dtickrange=[86400000, 604800000], value="%e. %b"),
                 dict(dtickrange=[604800000, "M1"], value="%e. %b"),
-                dict(dtickrange=["M1", "M12"], value="%b '%y"),
-                dict(dtickrange=["M12", None], value="%Y")
+                # dict(dtickrange=["M1", "M12"], value="%b '%y"),
+                # dict(dtickrange=["M12", None], value="%Y")
             ]
         ),
 
@@ -185,7 +185,7 @@ def index():
 
     df = pd.read_sql_query(
         """
-        SELECT * FROM measurements WHERE measureType='temperature' AND vivarium_id=2 AND timestamp>= datetime('now','-2 day')
+        SELECT * FROM measurements WHERE measureType='temperature' AND vivarium_id=2
         """
         , conn)
 
@@ -200,9 +200,9 @@ def index():
                 dict(count=3, label="3h", step="hour", stepmode="backward"),
                 dict(count=6, label="6h", step="hour", stepmode="backward"),
                 dict(count=12, label="12h", step="hour", stepmode="backward"),
-                dict(count=24, label="1d", step="hour", stepmode="todate"),
-                dict(count=7, label="1w", step="day", stepmode="backward"),
-                dict(count=14, label="1w", step="day", stepmode="backward"),
+                dict(count=24, label="1d", step="hour", stepmode="backward"),
+                # dict(count=7 * 24, label="1w", step="hour", stepmode="backward"),
+                # dict(count=14, label="2w", step="day", stepmode="backward"),
                 # dict(count=3, label="1q", step="month", stepmode="backward"),
                 # dict(count=6, label="1/2y", step="month", stepmode="backward"),
                 # dict(count=1, label="1y", step="year", stepmode="backward"),
@@ -216,8 +216,8 @@ def index():
             dict(dtickrange=[3600000, 86400000], value="%I %p"),
             dict(dtickrange=[86400000, 604800000], value="%e. %b"),
             dict(dtickrange=[604800000, "M1"], value="%e. %b"),
-            dict(dtickrange=["M1", "M12"], value="%b '%y"),
-            dict(dtickrange=["M12", None], value="%Y")
+            # dict(dtickrange=["M1", "M12"], value="%b '%y"),
+            # dict(dtickrange=["M12", None], value="%Y")
         ]
     )
 
