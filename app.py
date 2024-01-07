@@ -84,13 +84,13 @@ def index():
 
     conn = sqlite3.connect(sqlite_db)
 
-    df = pd.read_sql_query(
-        """
-        SELECT * FROM measurements WHERE measureType='humidity' AND vivarium_id=1
-        """
-        , conn)
-
-    conn.close()
+    # df = pd.read_sql_query(
+    #     """
+    #     SELECT * FROM measurements WHERE measureType='humidity' AND vivarium_id=1
+    #     """
+    #     , conn)
+    #
+    # conn.close()
 
     for group, data in df.groupby('sensor_position'):
         fig.add_trace(go.Line(
