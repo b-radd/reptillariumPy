@@ -102,6 +102,7 @@ def index():
         )
 
     fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
+    fig.update_yaxes(title_text='Temperature (ºC)')
     fig.update_xaxes(title_text='Time')
     # fig.update_xaxes(
     #     rangeslider_visible=False,
@@ -192,6 +193,7 @@ def index():
     conn.close()
 
     fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
+    fig.update_yaxes(title_text='Temperature (ºC)')
     fig.update_xaxes(title_text='Time')
     fig.update_xaxes(
         rangeslider_visible=False,
@@ -234,6 +236,7 @@ def index():
     conn.close()
 
     fig = px.line(df, x='timestamp', y='value', color='sensor_position', markers=True)
+    fig.update_yaxes(title_text='Relative Humidity (%)')
     fig.update_xaxes(title_text='Time')
     fig.update_xaxes(
         rangeslider_visible=False,
