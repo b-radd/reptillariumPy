@@ -37,14 +37,18 @@
 
     <div id='chart2' class='chart'></div>
 
+    <div id='chart3' class='chart'></div>
+
 </body>
 
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 <script type='text/javascript'>
   var graphs_1 = {{graphJSON_1 | safe}};
   var graphs_2 = {{graphJSON_2 | safe}};
+  var graphs_3 = {{graphJSON_3 | safe}};
   Plotly.plot('chart1',graphs_1,{});
   Plotly.plot('chart2',graphs_2,{});
+  Plotly.plot('chart3',graphs_3,{});
 </script>
 
 </html>
