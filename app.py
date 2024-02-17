@@ -33,7 +33,7 @@ def index():
         """
         , conn)
 
-    print(latest_read.to_string())
+    # print(latest_read.to_string())
 
     templateData = {
         "time": latest_read['timestamp'].max(),
